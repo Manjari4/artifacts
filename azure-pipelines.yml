@@ -12,17 +12,6 @@ jobs:
   steps:
   - checkout: self
 
-  - task: DownloadSecureFile@1
-    displayName: "Download Terraform files from repository"
-    inputs:
-      secureFile: 'terraform_files.zip'
-
-  - task: ExtractFiles@1
-    displayName: "Extract Terraform files"
-    inputs:
-      archiveFilePatterns: 'terraform_files.zip'
-      destinationFolder: '$(Build.SourcesDirectory)/terraform_files'
-
   - task: PublishPipelineArtifact@1
     displayName: "Publish Terraform files as artifact"
     inputs:
