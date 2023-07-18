@@ -15,5 +15,5 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: "Publish Terraform files as artifact"
     inputs:
-      targetPath: '$(Build.SourcesDirectory)/terraform_files'
+      targetPath: '/home/knoldus/myagent/_work/2/s/terraform_files'
       artifactName: 'TerraformFiles'
