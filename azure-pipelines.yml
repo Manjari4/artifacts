@@ -1,5 +1,4 @@
 trigger:
-
   branches:
     include:
       - none
@@ -13,9 +12,17 @@ jobs:
   steps:
   - checkout: self
 
+  - task: CopyFiles@2
+    inputs:
+     SourceFolder: 'https://github.com/Manjari4/artifacts/tree/main'
+     Contents: '**'
+     TargetFolder: '/home/knoldus/ado_ar'
+
   - task: PublishBuildArtifacts@1
     inputs:
      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
      ArtifactName: 'drop'
      publishLocation: 'Container'
      StoreAsTar: true
+  
+  
