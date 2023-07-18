@@ -1,0 +1,19 @@
+trigger:
+  branches:
+    include:
+      - none
+
+jobs:
+- job: DownloadTerraformFiles
+  displayName: "Download Terraform Files"
+  pool:
+    default
+
+  steps:
+  - checkout: self
+
+  - task: PublishPipelineArtifact@1
+    displayName: "Publish Terraform files as artifact"
+    inputs:
+      targetPath: '$(Build.SourcesDirectory)/terraform_files'
+      artifactName: 'TerraformFiles'
