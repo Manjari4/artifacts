@@ -18,11 +18,15 @@ jobs:
      Contents: '**'
      TargetFolder: '/home/knoldus/ado_ar'
 
-  - task: PublishBuildArtifacts@1
+  # - task: PublishBuildArtifacts@1
+  #   inputs:
+  #    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  #    ArtifactName: 'arti'
+  #    publishLocation: 'Container'
+  #    StoreAsTar: true
+  
+  - task: PublishPipelineArtifact@1
     inputs:
-     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-     ArtifactName: 'drop'
-     publishLocation: 'Container'
-     StoreAsTar: true
-  
-  
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: 'demo'
+      publishLocation: 'pipeline'
